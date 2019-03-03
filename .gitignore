@@ -1,8 +1,10 @@
 .merlin
 /node_modules/
+/dist/
 /lib/*
 !/lib/js/*
-/bundledOutputs/
-npm-debug.log
+/build/
+*.log
 .DS_Store
 .bsb.lock
+.vscode/
