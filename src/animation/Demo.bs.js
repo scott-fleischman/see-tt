@@ -6,8 +6,8 @@ var React = require("react");
 var Printf = require("bs-platform/lib/js/printf.js");
 var $$String = require("bs-platform/lib/js/string.js");
 var Pervasives = require("bs-platform/lib/js/pervasives.js");
+var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 var RemoteAction$ReasonReactExample = require("./RemoteAction.bs.js");
 var SpringAnimation$ReasonReactExample = require("./SpringAnimation.bs.js");
 
@@ -21,7 +21,7 @@ var GlobalState = /* module */[/* initial */initial];
 
 var component = ReasonReact.statelessComponent("Counter1");
 
-function make(state, update, _) {
+function make(state, update, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -32,9 +32,9 @@ function make(state, update, _) {
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (param) {
               return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(update, (function (state) {
                                                 return /* record */[
                                                         /* count1 */state[/* count1 */0] + 1 | 0,
@@ -44,7 +44,7 @@ function make(state, update, _) {
                                               }));
                                 })
                             }, "+"), React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(update, (function (state) {
                                                 return /* record */[
                                                         /* count1 */state[/* count1 */0] - 1 | 0,
@@ -69,7 +69,7 @@ var Counter1 = /* module */[
 
 var component$1 = ReasonReact.statelessComponent("Counter2");
 
-function make$1(state, update, _) {
+function make$1(state, update, _children) {
   return /* record */[
           /* debugName */component$1[/* debugName */0],
           /* reactClassInternal */component$1[/* reactClassInternal */1],
@@ -80,9 +80,9 @@ function make$1(state, update, _) {
           /* willUnmount */component$1[/* willUnmount */6],
           /* willUpdate */component$1[/* willUpdate */7],
           /* shouldUpdate */component$1[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (param) {
               return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(update, (function (state) {
                                                 return /* record */[
                                                         /* count1 */state[/* count1 */0],
@@ -92,7 +92,7 @@ function make$1(state, update, _) {
                                               }));
                                 })
                             }, "+"), React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(update, (function (state) {
                                                 return /* record */[
                                                         /* count1 */state[/* count1 */0],
@@ -117,7 +117,7 @@ var Counter2 = /* module */[
 
 var component$2 = ReasonReact.statelessComponent("Toggle");
 
-function make$2(state, update, _) {
+function make$2(state, update, _children) {
   return /* record */[
           /* debugName */component$2[/* debugName */0],
           /* reactClassInternal */component$2[/* reactClassInternal */1],
@@ -128,9 +128,9 @@ function make$2(state, update, _) {
           /* willUnmount */component$2[/* willUnmount */6],
           /* willUpdate */component$2[/* willUpdate */7],
           /* shouldUpdate */component$2[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (param) {
               return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(update, (function (state) {
                                                 return /* record */[
                                                         /* count1 */state[/* count1 */0],
@@ -155,7 +155,7 @@ var Toggle = /* module */[
 
 var component$3 = ReasonReact.reducerComponent("GlobalStateExample");
 
-function make$3() {
+function make$3(_children) {
   return /* record */[
           /* debugName */component$3[/* debugName */0],
           /* reactClassInternal */component$3[/* reactClassInternal */1],
@@ -172,7 +172,7 @@ function make$3() {
               var update = Curry.__1(send);
               return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, make(state, update, /* array */[])), ReasonReact.element(undefined, undefined, make$1(state, update, /* array */[])), ReasonReact.element(undefined, undefined, make$1(state, update, /* array */[])), ReasonReact.element(undefined, undefined, make$2(state, update, /* array */[])));
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return initial;
             }),
           /* retainedProps */component$3[/* retainedProps */11],
@@ -190,7 +190,7 @@ var GlobalStateExample = /* module */[
 
 var component$4 = ReasonReact.reducerComponent("LocalCounter");
 
-function make$4() {
+function make$4(_children) {
   return /* record */[
           /* debugName */component$4[/* debugName */0],
           /* reactClassInternal */component$4[/* reactClassInternal */1],
@@ -204,16 +204,16 @@ function make$4() {
           /* render */(function (param) {
               var send = param[/* send */3];
               return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(send, /* Incr */0);
                                 })
                             }, "+"), React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(send, /* Decr */1);
                                 })
                             }, "-"), " counter:" + String(param[/* state */1]));
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return 0;
             }),
           /* retainedProps */component$4[/* retainedProps */11],
@@ -235,7 +235,7 @@ var LocalCounter = /* module */[
 
 var component$5 = ReasonReact.reducerComponent("LocalToggle");
 
-function make$5() {
+function make$5(_children) {
   return /* record */[
           /* debugName */component$5[/* debugName */0],
           /* reactClassInternal */component$5[/* reactClassInternal */1],
@@ -249,16 +249,16 @@ function make$5() {
           /* render */(function (param) {
               var send = param[/* send */3];
               return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(send, /* Toggle */0);
                                 })
                             }, "Toggle"), " toggle:" + Pervasives.string_of_bool(param[/* state */1]));
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return false;
             }),
           /* retainedProps */component$5[/* retainedProps */11],
-          /* reducer */(function (_, state) {
+          /* reducer */(function (action, state) {
               return /* Update */Block.__(0, [!state]);
             }),
           /* jsElementWrapped */component$5[/* jsElementWrapped */13]
@@ -272,7 +272,7 @@ var LocalToggle = /* module */[
 
 var component$6 = ReasonReact.statelessComponent("LocalStateExample");
 
-function make$6() {
+function make$6(_children) {
   return /* record */[
           /* debugName */component$6[/* debugName */0],
           /* reactClassInternal */component$6[/* reactClassInternal */1],
@@ -283,7 +283,7 @@ function make$6() {
           /* willUnmount */component$6[/* willUnmount */6],
           /* willUpdate */component$6[/* willUpdate */7],
           /* shouldUpdate */component$6[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (param) {
               return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, make$4(/* array */[])), ReasonReact.element(undefined, undefined, make$4(/* array */[])), ReasonReact.element(undefined, undefined, make$4(/* array */[])), ReasonReact.element(undefined, undefined, make$5(/* array */[])));
             }),
           /* initialState */component$6[/* initialState */10],
@@ -304,8 +304,8 @@ function textOfEvent(e) {
   return e.target.value;
 }
 
-function make$7($staropt$star, $staropt$star$1, $staropt$star$2, _) {
-  var onChange = $staropt$star !== undefined ? $staropt$star : (function () {
+function make$7($staropt$star, $staropt$star$1, $staropt$star$2, _children) {
+  var onChange = $staropt$star !== undefined ? $staropt$star : (function (param) {
         return /* () */0;
       });
   var showText = $staropt$star$1 !== undefined ? $staropt$star$1 : (function (x) {
@@ -333,11 +333,11 @@ function make$7($staropt$star, $staropt$star$1, $staropt$star$2, _) {
                             })
                         });
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return initial;
             }),
           /* retainedProps */component$7[/* retainedProps */11],
-          /* reducer */(function (action, _) {
+          /* reducer */(function (action, _state) {
               return /* Update */Block.__(0, [action[0]]);
             }),
           /* jsElementWrapped */component$7[/* jsElementWrapped */13]
@@ -352,7 +352,7 @@ var TextInput = /* module */[
 
 var component$8 = ReasonReact.reducerComponent("Spring");
 
-function make$8(renderValue, _) {
+function make$8(renderValue, _children) {
   return /* record */[
           /* debugName */component$8[/* debugName */0],
           /* reactClassInternal */component$8[/* reactClassInternal */1],
@@ -371,7 +371,7 @@ function make$8(renderValue, _) {
                             return SpringAnimation$ReasonReactExample.setOnChange(param, param$1, param$2, param$3, arg, arg$1, param$4);
                           });
                       })(undefined, undefined, undefined, undefined), eta);
-              return Curry._1(param[/* onUnmount */4], (function () {
+              return Curry._1(param[/* onUnmount */4], (function (param) {
                             return SpringAnimation$ReasonReactExample.stop(state[/* animation */0]);
                           }));
             }),
@@ -383,12 +383,12 @@ function make$8(renderValue, _) {
               var send = param[/* send */3];
               var state = param[/* state */1];
               return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return Curry._1(send, /* Click */0);
                                 })
                             }, "target: " + Pervasives.string_of_float(state[/* target */2])), React.createElement("div", undefined, Curry._1(renderValue, state[/* value */1])));
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return /* record */[
                       /* animation */SpringAnimation$ReasonReactExample.create(0.0),
                       /* value */0.0,
@@ -412,7 +412,7 @@ function make$8(renderValue, _) {
                             /* value */state[/* value */1],
                             /* target */target
                           ],
-                          (function () {
+                          (function (param) {
                               return SpringAnimation$ReasonReactExample.setFinalValue(target, state[/* animation */0]);
                             })
                         ]);
@@ -444,7 +444,7 @@ function renderValue(value) {
 
 var component$9 = ReasonReact.statelessComponent("SimpleSpring");
 
-function make$9() {
+function make$9(_children) {
   return /* record */[
           /* debugName */component$9[/* debugName */0],
           /* reactClassInternal */component$9[/* reactClassInternal */1],
@@ -455,7 +455,7 @@ function make$9() {
           /* willUnmount */component$9[/* willUnmount */6],
           /* willUpdate */component$9[/* willUpdate */7],
           /* shouldUpdate */component$9[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (param) {
               return ReasonReact.element(undefined, undefined, make$8(renderValue, /* array */[]));
             }),
           /* initialState */component$9[/* initialState */10],
@@ -489,7 +489,7 @@ function renderValue$1(value) {
 
 var component$10 = ReasonReact.statelessComponent("AnimatedTextInput");
 
-function make$10() {
+function make$10(_children) {
   return /* record */[
           /* debugName */component$10[/* debugName */0],
           /* reactClassInternal */component$10[/* reactClassInternal */1],
@@ -500,7 +500,7 @@ function make$10() {
           /* willUnmount */component$10[/* willUnmount */6],
           /* willUpdate */component$10[/* willUpdate */7],
           /* shouldUpdate */component$10[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (param) {
               return ReasonReact.element(undefined, undefined, make$8(renderValue$1, /* array */[]));
             }),
           /* initialState */component$10[/* initialState */10],
@@ -523,8 +523,8 @@ function textOfEvent$1(e) {
   return e.target.value;
 }
 
-function make$11(remoteAction, $staropt$star, $staropt$star$1, $staropt$star$2, _) {
-  var onChange = $staropt$star !== undefined ? $staropt$star : (function () {
+function make$11(remoteAction, $staropt$star, $staropt$star$1, $staropt$star$2, _children) {
+  var onChange = $staropt$star !== undefined ? $staropt$star : (function (param) {
         return /* () */0;
       });
   var showText = $staropt$star$1 !== undefined ? $staropt$star$1 : (function (x) {
@@ -538,9 +538,9 @@ function make$11(remoteAction, $staropt$star, $staropt$star$1, $staropt$star$2, 
           /* willReceiveProps */component$11[/* willReceiveProps */3],
           /* didMount */(function (param) {
               var token = RemoteAction$ReasonReactExample.subscribe(param[/* send */3], remoteAction);
-              return Curry._1(param[/* onUnmount */4], (function () {
+              return Curry._1(param[/* onUnmount */4], (function (param) {
                             if (token !== undefined) {
-                              return RemoteAction$ReasonReactExample.unsubscribe(Js_primitive.valFromOption(token));
+                              return RemoteAction$ReasonReactExample.unsubscribe(Caml_option.valFromOption(token));
                             } else {
                               return /* () */0;
                             }
@@ -561,11 +561,11 @@ function make$11(remoteAction, $staropt$star, $staropt$star$1, $staropt$star$2, 
                             })
                         });
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return initial;
             }),
           /* retainedProps */component$11[/* retainedProps */11],
-          /* reducer */(function (action, _) {
+          /* reducer */(function (action, _state) {
               if (action) {
                 return /* Update */Block.__(0, [action[0]]);
               } else {
@@ -602,7 +602,7 @@ function renderValue$2(value) {
 
 var component$12 = ReasonReact.statelessComponent("AnimatedTextInput");
 
-function make$12() {
+function make$12(_children) {
   return /* record */[
           /* debugName */component$12[/* debugName */0],
           /* reactClassInternal */component$12[/* reactClassInternal */1],
@@ -613,9 +613,9 @@ function make$12() {
           /* willUnmount */component$12[/* willUnmount */6],
           /* willUpdate */component$12[/* willUpdate */7],
           /* shouldUpdate */component$12[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (param) {
               return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return RemoteAction$ReasonReactExample.send(remoteAction, /* Reset */0);
                                 })
                             }, "reset text"), React.createElement("div", undefined, "-----"), ReasonReact.element(undefined, undefined, make$8(renderValue$2, /* array */[])));
@@ -637,7 +637,7 @@ var AnimatedTextInputRemote = /* module */[
 
 var component$13 = ReasonReact.reducerComponent("GrandChild");
 
-function make$13(remoteAction, _) {
+function make$13(remoteAction, param) {
   return /* record */[
           /* debugName */component$13[/* debugName */0],
           /* reactClassInternal */component$13[/* reactClassInternal */1],
@@ -645,9 +645,9 @@ function make$13(remoteAction, _) {
           /* willReceiveProps */component$13[/* willReceiveProps */3],
           /* didMount */(function (param) {
               var token = RemoteAction$ReasonReactExample.subscribe(param[/* send */3], remoteAction);
-              return Curry._1(param[/* onUnmount */4], (function () {
+              return Curry._1(param[/* onUnmount */4], (function (param) {
                             if (token !== undefined) {
-                              return RemoteAction$ReasonReactExample.unsubscribe(Js_primitive.valFromOption(token));
+                              return RemoteAction$ReasonReactExample.unsubscribe(Caml_option.valFromOption(token));
                             } else {
                               return /* () */0;
                             }
@@ -660,7 +660,7 @@ function make$13(remoteAction, _) {
           /* render */(function (param) {
               return React.createElement("div", undefined, "in grandchild state: " + String(param[/* state */1]));
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return 0;
             }),
           /* retainedProps */component$13[/* retainedProps */11],
@@ -682,7 +682,7 @@ var GrandChild = /* module */[
 
 var component$14 = ReasonReact.statelessComponent("Child");
 
-function make$14(remoteAction, _) {
+function make$14(remoteAction, param) {
   return /* record */[
           /* debugName */component$14[/* debugName */0],
           /* reactClassInternal */component$14[/* reactClassInternal */1],
@@ -693,7 +693,7 @@ function make$14(remoteAction, _) {
           /* willUnmount */component$14[/* willUnmount */6],
           /* willUpdate */component$14[/* willUpdate */7],
           /* shouldUpdate */component$14[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (param) {
               return React.createElement("div", undefined, "in child", ReasonReact.element(undefined, undefined, make$13(remoteAction, /* array */[])));
             }),
           /* initialState */component$14[/* initialState */10],
@@ -710,7 +710,7 @@ var Child = /* module */[
 
 var component$15 = ReasonReact.reducerComponent("Parent");
 
-function make$15() {
+function make$15(param) {
   return /* record */[
           /* debugName */component$15[/* debugName */0],
           /* reactClassInternal */component$15[/* reactClassInternal */1],
@@ -724,16 +724,16 @@ function make$15() {
           /* render */(function (param) {
               var state = param[/* state */1];
               return React.createElement("div", undefined, React.createElement("button", {
-                              onClick: (function () {
+                              onClick: (function (param) {
                                   return RemoteAction$ReasonReactExample.send(state, /* Incr */0);
                                 })
                             }, "in parent"), ReasonReact.element(undefined, undefined, make$14(state, /* array */[])));
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return RemoteAction$ReasonReactExample.create(/* () */0);
             }),
           /* retainedProps */component$15[/* retainedProps */11],
-          /* reducer */(function (_, _$1) {
+          /* reducer */(function (param, param$1) {
               return /* NoUpdate */0;
             }),
           /* jsElementWrapped */component$15[/* jsElementWrapped */13]

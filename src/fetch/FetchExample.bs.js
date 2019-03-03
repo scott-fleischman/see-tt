@@ -20,7 +20,7 @@ var Decode = /* module */[/* dogs */dogs];
 
 var component = ReasonReact.reducerComponent("FetchExample");
 
-function make() {
+function make(_children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -51,11 +51,11 @@ function make() {
                                     }))));
               }
             }),
-          /* initialState */(function () {
+          /* initialState */(function (_state) {
               return /* Loading */0;
             }),
           /* retainedProps */component[/* retainedProps */11],
-          /* reducer */(function (action, _) {
+          /* reducer */(function (action, _state) {
               if (typeof action === "number") {
                 if (action !== 0) {
                   return /* Update */Block.__(0, [/* Error */1]);
@@ -68,7 +68,7 @@ function make() {
                                           })).then((function (json) {
                                           var dogs$1 = dogs(json);
                                           return Promise.resolve(Curry._1(self[/* send */3], /* DogsFetched */[dogs$1]));
-                                        })).catch((function () {
+                                        })).catch((function (_err) {
                                         return Promise.resolve(Curry._1(self[/* send */3], /* DogsFailedToFetch */1));
                                       }));
                                 return /* () */0;

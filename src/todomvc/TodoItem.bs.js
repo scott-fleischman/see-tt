@@ -4,21 +4,21 @@ var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var $$String = require("bs-platform/lib/js/string.js");
+var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
 
 var component = ReasonReact.reducerComponent("TodoItemRe");
 
 function setEditFieldRef(r, param) {
-  param[/* state */1][/* editFieldRef */2][0] = (r == null) ? undefined : Js_primitive.some(r);
+  param[/* state */1][/* editFieldRef */2][0] = (r == null) ? undefined : Caml_option.some(r);
   return /* () */0;
 }
 
-function make(todo, editing, onDestroy, onSave, onEdit, onToggle, onCancel, _) {
+function make(todo, editing, onDestroy, onSave, onEdit, onToggle, onCancel, _children) {
   var submitHelper = function (state) {
     var nonEmptyValue = $$String.trim(state[/* editText */0]);
     if (nonEmptyValue === "") {
-      return /* SideEffects */Block.__(1, [(function () {
+      return /* SideEffects */Block.__(1, [(function (_self) {
                     return Curry._1(onDestroy, /* () */0);
                   })]);
     } else {
@@ -28,7 +28,7 @@ function make(todo, editing, onDestroy, onSave, onEdit, onToggle, onCancel, _) {
                   /* editing */state[/* editing */1],
                   /* editFieldRef */state[/* editFieldRef */2]
                 ],
-                (function () {
+                (function (_self) {
                     return Curry._1(onSave, nonEmptyValue);
                   })
               ]);
@@ -53,7 +53,7 @@ function make(todo, editing, onDestroy, onSave, onEdit, onToggle, onCancel, _) {
               if (match || !(editing && match$1 !== undefined)) {
                 return /* () */0;
               } else {
-                var field = Js_primitive.valFromOption(match$1);
+                var field = Caml_option.valFromOption(match$1);
                 field.focus();
                 field.setSelectionRange(field.value.length, field.value.length);
                 return /* () */0;
@@ -80,17 +80,17 @@ function make(todo, editing, onDestroy, onSave, onEdit, onToggle, onCancel, _) {
                                   className: "toggle",
                                   checked: todo[/* completed */2],
                                   type: "checkbox",
-                                  onChange: (function () {
+                                  onChange: (function (param) {
                                       return Curry._1(onToggle, /* () */0);
                                     })
                                 }), React.createElement("label", {
-                                  onDoubleClick: (function () {
+                                  onDoubleClick: (function (_event) {
                                       Curry._1(onEdit, /* () */0);
                                       return Curry._1(send, /* Edit */0);
                                     })
                                 }, todo[/* title */1]), React.createElement("button", {
                                   className: "destroy",
-                                  onClick: (function () {
+                                  onClick: (function (param) {
                                       return Curry._1(onDestroy, /* () */0);
                                     })
                                 })), React.createElement("input", {
@@ -100,7 +100,7 @@ function make(todo, editing, onDestroy, onSave, onEdit, onToggle, onCancel, _) {
                               onKeyDown: (function ($$event) {
                                   return Curry._1(send, /* KeyDown */Block.__(0, [$$event.which]));
                                 }),
-                              onBlur: (function () {
+                              onBlur: (function (_event) {
                                   return Curry._1(send, /* Submit */1);
                                 }),
                               onChange: (function ($$event) {
@@ -108,7 +108,7 @@ function make(todo, editing, onDestroy, onSave, onEdit, onToggle, onCancel, _) {
                                 })
                             }));
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               return /* record */[
                       /* editText */todo[/* title */1],
                       /* editing */editing,
@@ -146,7 +146,7 @@ function make(todo, editing, onDestroy, onSave, onEdit, onToggle, onCancel, _) {
                 var match = action[0];
                 if (match !== 13) {
                   if (match !== 27) {
-                    return (function () {
+                    return (function (_state) {
                         return /* NoUpdate */0;
                       });
                   } else {

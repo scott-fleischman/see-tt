@@ -37,7 +37,7 @@ function urlToShownPage(hash) {
 
 var component = ReasonReact.reducerComponent("TodoAppRe");
 
-function make() {
+function make(_children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -47,7 +47,7 @@ function make() {
               var token = ReasonReact.Router[/* watchUrl */1]((function (url) {
                       return Curry._1(self[/* send */3], /* Navigate */Block.__(0, [urlToShownPage(url[/* hash */1])]));
                     }));
-              return Curry._1(self[/* onUnmount */4], (function () {
+              return Curry._1(self[/* onUnmount */4], (function (param) {
                             return ReasonReact.Router[/* unwatchUrl */2](token);
                           }));
             }),
@@ -74,18 +74,18 @@ function make() {
                     }));
               var todoItems = Belt_List.map(__x, (function (todo) {
                       var editing$1 = editing !== undefined ? editing === todo[/* id */0] : false;
-                      return ReasonReact.element(todo[/* id */0], undefined, TodoItem$ReasonReactExample.make(todo, editing$1, (function () {
+                      return ReasonReact.element(todo[/* id */0], undefined, TodoItem$ReasonReactExample.make(todo, editing$1, (function (_event) {
                                         return Curry._1(send, /* Destroy */Block.__(4, [todo]));
                                       }), (function (text) {
                                         return Curry._1(send, /* Save */Block.__(2, [
                                                       todo,
                                                       text
                                                     ]));
-                                      }), (function () {
+                                      }), (function (_event) {
                                         return Curry._1(send, /* Edit */Block.__(3, [todo]));
-                                      }), (function () {
+                                      }), (function (_event) {
                                         return Curry._1(send, /* Toggle */Block.__(5, [todo]));
-                                      }), (function () {
+                                      }), (function (_event) {
                                         return Curry._1(send, /* Cancel */3);
                                       }), /* array */[]));
                     }));
@@ -102,7 +102,7 @@ function make() {
                 footer = null;
               }
               if (exit === 1) {
-                footer = ReasonReact.element(undefined, undefined, TodoFooter$ReasonReactExample.make(activeTodoCount, completedCount, state[/* nowShowing */0], (function () {
+                footer = ReasonReact.element(undefined, undefined, TodoFooter$ReasonReactExample.make(activeTodoCount, completedCount, state[/* nowShowing */0], (function (_event) {
                             return Curry._1(send, /* ClearCompleted */2);
                           }), /* array */[]));
               }
@@ -140,7 +140,7 @@ function make() {
                                     })
                                 })), main, footer);
             }),
-          /* initialState */(function () {
+          /* initialState */(function (param) {
               var match = localStorage.getItem(localStorageNamespace);
               var todos = match !== null ? JSON.parse(match) : /* [] */0;
               return /* record */[
@@ -188,7 +188,7 @@ function make() {
                                   /* newTodo */state[/* newTodo */2],
                                   /* todos */todos$1
                                 ],
-                                (function () {
+                                (function (_self) {
                                     return saveLocally(todos$1);
                                   })
                               ]);
@@ -239,7 +239,7 @@ function make() {
                                   /* newTodo */state[/* newTodo */2],
                                   /* todos */todos$2
                                 ],
-                                (function () {
+                                (function (_self) {
                                     return saveLocally(todos$2);
                                   })
                               ]);
@@ -262,7 +262,7 @@ function make() {
                                   /* newTodo */state[/* newTodo */2],
                                   /* todos */todos$3
                                 ],
-                                (function () {
+                                (function (_self) {
                                     return saveLocally(todos$3);
                                   })
                               ]);
@@ -287,7 +287,7 @@ function make() {
                                   /* newTodo */state[/* newTodo */2],
                                   /* todos */todos$4
                                 ],
-                                (function () {
+                                (function (_self) {
                                     return saveLocally(todos$4);
                                   })
                               ]);
@@ -307,7 +307,7 @@ function make() {
                                   /* newTodo */state[/* newTodo */2],
                                   /* todos */todos$5
                                 ],
-                                (function () {
+                                (function (_self) {
                                     return saveLocally(todos$5);
                                   })
                               ]);

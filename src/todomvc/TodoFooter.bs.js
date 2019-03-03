@@ -10,7 +10,7 @@ function push(path, $$event) {
   return ReasonReact.Router[/* push */0]("#" + path);
 }
 
-function make(count, completedCount, nowShowing, onClearCompleted, _) {
+function make(count, completedCount, nowShowing, onClearCompleted, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -21,7 +21,7 @@ function make(count, completedCount, nowShowing, onClearCompleted, _) {
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (_self) {
               var match = count === 1;
               var activeTodoWord = match ? "item" : "items";
               var match$1 = completedCount > 0;

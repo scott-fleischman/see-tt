@@ -6,7 +6,7 @@ var RetainedPropsExample$ReasonReactExample = require("./RetainedPropsExample.bs
 
 var toggle = /* record */[/* contents */false];
 
-function render() {
+function render(param) {
   toggle[0] = !toggle[/* contents */0];
   var match = toggle[/* contents */0];
   return ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, RetainedPropsExample$ReasonReactExample.make(match ? "Hello!" : "Goodbye", /* array */[])), "index");

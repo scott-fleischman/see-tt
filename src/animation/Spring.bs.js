@@ -53,7 +53,7 @@ function isFinished(param) {
   }
 }
 
-function test() {
+function test(param) {
   var _state = /* record */[
     /* value */0.0,
     /* velocity */0.0,

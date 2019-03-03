@@ -6,12 +6,12 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 
 var component = ReasonReact.statelessComponent("Page");
 
-function handleClick(_, _$1) {
+function handleClick(_event, _self) {
   console.log("clicked!");
   return /* () */0;
 }
 
-function make(message, _) {
+function make(message, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],

@@ -1,7 +1,7 @@
 'use strict';
 
 var Curry = require("bs-platform/lib/js/curry.js");
-var Js_primitive = require("bs-platform/lib/js/js_primitive.js");
+var Caml_option = require("bs-platform/lib/js/caml_option.js");
 var Spring$ReasonReactExample = require("./Spring.bs.js");
 var Animation$ReasonReactExample = require("./Animation.bs.js");
 
@@ -15,7 +15,7 @@ function create(initialValue) {
 }
 
 function setOnChange(preset, speedup, precision, $staropt$star, onChange, finalValue, a) {
-  var onStop = $staropt$star !== undefined ? Js_primitive.valFromOption($staropt$star) : undefined;
+  var onStop = $staropt$star !== undefined ? Caml_option.valFromOption($staropt$star) : undefined;
   var callback = function () {
     a[/* state */1] = Spring$ReasonReactExample.stepper(undefined, speedup, precision, preset, a[/* state */1]);
     var isFinished = Spring$ReasonReactExample.isFinished(a[/* state */1]);

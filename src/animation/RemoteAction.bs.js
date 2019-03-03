@@ -2,11 +2,11 @@
 
 var Curry = require("bs-platform/lib/js/curry.js");
 
-function sendDefault() {
+function sendDefault(_action) {
   return /* () */0;
 }
 
-function create() {
+function create(param) {
   return /* record */[/* send */sendDefault];
 }
 

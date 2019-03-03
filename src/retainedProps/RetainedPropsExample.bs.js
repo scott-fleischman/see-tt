@@ -5,7 +5,7 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 
 var component = ReasonReact.statelessComponentWithRetainedProps("RetainedPropsExample");
 
-function make(message, _) {
+function make(message, _children) {
   return /* record */[
           /* debugName */component[/* debugName */0],
           /* reactClassInternal */component[/* reactClassInternal */1],
@@ -23,7 +23,7 @@ function make(message, _) {
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
-          /* render */(function () {
+          /* render */(function (_self) {
               return React.createElement("div", undefined, message);
             }),
           /* initialState */component[/* initialState */10],
